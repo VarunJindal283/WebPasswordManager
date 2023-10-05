@@ -11,7 +11,8 @@
             font-family: 'Poppins', sans-serif;
         }
         nav{
-            background-color: red;
+            background-color: rgb(135, 135, 135);
+            padding: 12px 3px;
         }
         ul{
             display: flex;
@@ -19,6 +20,13 @@
         ul li{
             list-style: none;
             margin: 0 13px;
+        }
+        table{
+            border: 2px solid black;
+        }
+        .container{
+            max-width: 80vw;
+            margin: auto;
         }
     </style>
 </head>
@@ -36,15 +44,36 @@
         <h2>Your Passwords</h2>
         <table>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
+                <th>Website</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Delete</th>
             </tr>
             <tr>
-                <td>Varun</td>
-                <td>19</td>
+                <td>Meta.vars</td>
+                <td>varun@metavars.com</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Meta.vars</td>
+                <td>varun@metavars.com</td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
         <h2>Add a Password</h2>
+        <form action="/submit" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </body>
 </html>
