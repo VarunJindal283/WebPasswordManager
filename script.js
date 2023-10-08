@@ -28,9 +28,9 @@ const showPasswords=()=>{
         for (let index =0; index<arr.length;index++){
             const element = arr[index];
             str =`<tr>
-            <td>${element.website}</td>
-            <td>${element.username}</td>
-            <td>${element.password}</td>
+            <td>${element.website} <img onclick="copyText(${element.password}) src="copy.svg" alt="Copy Button" width="10" height="10"></td>
+            <td>${element.username} <img onclick="copyText(${element.password}) src="copy.svg" alt="Copy Button" width="10" height="10"></td>
+            <td>${element.password} <img onclick="copyText(${element.password}) src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td><button class="btnsm" onclick="deletePassword('${element.website}')">Delete</button></td>
             </tr>`
             tb.innerHTML=tb.innerHTML + str;
