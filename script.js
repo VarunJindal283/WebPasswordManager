@@ -1,3 +1,13 @@
+function maskPassword(pass){
+    let str="";
+    for(let index =0; index<pass.length; index++){
+        str += "*";
+    }
+    return str;
+}
+
+
+
 function copyText(txt) {
     navigator.clipboard.writeText(txt);
     // alert("Copied the text: " + txt);
@@ -26,7 +36,7 @@ const deletePassword = (website) =>{
 const showPasswords=()=>{ 
     let tb=document.querySelector("table");
     let data = localStorage.getItem("passwords");
-    if(data == null){
+    if(data == null || JSON.parse(data).length == 0){
         tb.innerHTML= "No Data To Show"
     }
     else{
@@ -42,7 +52,7 @@ const showPasswords=()=>{
             str =`<tr>
             <td>${element.website} <img onclick="copyText('${element.website}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td>${element.username} <img onclick="copyText('${element.username}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
-            <td>${element.password} <img onclick="copyText('${element.password}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
+            <td>${maskPassword(element.password)} <img onclick="copyText('${element.password}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td><button class="btnsm" onclick="deletePassword('${element.website}')">Delete</button></td>
             </tr>`
             tb.innerHTML=tb.innerHTML + str;
