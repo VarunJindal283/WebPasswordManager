@@ -1,6 +1,11 @@
 function copyText(txt) {
     navigator.clipboard.writeText(txt);
     // alert("Copied the text: " + txt);
+    // document.querySelector(".alert").classList.remove("alert");
+    document.getElementById("alert").style.display = "inline";
+    setTimeout(()=>{
+        document.getElementById("alert").style.display = "none";
+    },500);
 }
 
 

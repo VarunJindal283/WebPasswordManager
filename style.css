@@ -37,7 +37,7 @@ table, td, tr, th{
     margin: 23px auto;
 }
 h1, h2, h3{
-    margin: 23px;
+    margin:23px 0px;
 }
 .btn{
     padding: 8px 17px;
@@ -64,4 +64,7 @@ td img{
     bottom: 7px;
     width: 15px;
     height: 13px;
+}
+#alert{
+    display: none;
 }
