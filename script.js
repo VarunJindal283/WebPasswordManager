@@ -6,6 +6,8 @@ const deletePassword = (website) =>{
         return e.website !=website
     });
     localStorage.setItem("passwords", JSON.stringify(arrUpdated));
+    alert(`Successfully deleted ${website}'s password`);
+    showPasswords();
 }
 
 
@@ -29,10 +31,13 @@ const showPasswords=()=>{
             <td>${element.website}</td>
             <td>${element.username}</td>
             <td>${element.password}</td>
-            <td><button class="btnsm" id="${element.website}">Delete</button></td>
+            <td><button class="btnsm" onclick="deletePassword('${element.website}')">Delete</button></td>
             </tr>`
             tb.innerHTML=tb.innerHTML + str;
         }
+        website.value="";
+        username.value="";
+        password.value="";
     }
 }
 
