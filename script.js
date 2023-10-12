@@ -1,3 +1,15 @@
+function checkRedentant(website, username){
+    let arr= JSON.parse(localStorage.getItem("passwords")); 
+    let r=false; 
+    arr.forEach((x)=>{
+        if(x.website==website){
+            if(x.username==username){
+                r=true;
+            }
+        }
+    }); 
+    return r;
+}
 function maskPassword(pass){
     let str="";
     for(let index =0; index<pass.length; index++){
@@ -66,6 +78,9 @@ const showPasswords=()=>{
 
 
 console.log("Working");
+document.getElementById.innerText="yes";
+if(checkRedentant('facebook.com','varun221')){        
+    }
 showPasswords();
 document.querySelector(".btn").addEventListener("click",(e)=>{
     e.preventDefault() //preventing page to reload or we can say prevent form to get submited
@@ -85,5 +100,5 @@ document.querySelector(".btn").addEventListener("click",(e)=>{
         alert("Password Saved");
         localStorage.setItem("passwords", JSON.stringify(json))
     }
-    showPasswords();
+    showPasswords();  
 })
