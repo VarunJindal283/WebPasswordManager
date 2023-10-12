@@ -10,6 +10,9 @@ function checkRedentant(website, username){
     }); 
     return r;
 }
+
+
+
 function maskPassword(pass){
     let str="";
     for(let index =0; index<pass.length; index++){
@@ -78,8 +81,8 @@ const showPasswords=()=>{
 
 
 console.log("Working");
-document.getElementById.innerText="yes";
-if(checkRedentant('facebook.com','varun221')){        
+if(checkRedentant('facebook.com','varun221')){   
+    document.getElementById("checkRed").innerText="yes";     
     }
 showPasswords();
 document.querySelector(".btn").addEventListener("click",(e)=>{
@@ -96,7 +99,11 @@ document.querySelector(".btn").addEventListener("click",(e)=>{
     }
     else{
         let json= JSON.parse(localStorage.getItem("passwords"))
-        json.push({website:website.value, username:username.value, password:password.value});
+        if(checkRedentant('facebook.com','varun221')){        
+            }
+        else{
+            json.push({website:website.value, username:username.value, password:password.value});
+        }
         alert("Password Saved");
         localStorage.setItem("passwords", JSON.stringify(json))
     }
