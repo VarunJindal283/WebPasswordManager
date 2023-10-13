@@ -1,3 +1,8 @@
+function updatedPassword(website,username,password){
+    deletePassword(website);
+}
+
+
 function checkRedentant(website, username){
     let arr= JSON.parse(localStorage.getItem("passwords")); 
     let r=false; 
@@ -43,7 +48,7 @@ const deletePassword = (website) =>{
     });
     localStorage.setItem("passwords", JSON.stringify(arrUpdated));
     alert(`Successfully deleted ${website}'s password`);
-    showPasswords();
+    // showPasswords();
 }
 
 // Logic to fill the table
@@ -68,7 +73,7 @@ const showPasswords=()=>{
             <td>${element.website} <img onclick="copyText('${element.website}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td>${element.username} <img onclick="copyText('${element.username}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td>${maskPassword(element.password)} <img onclick="copyText('${element.password}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
-            <td><button class="btnsm" onclick="deletePassword('${element.website}')">Delete</button></td>
+            <td><button class="btnsm" onclick="deletePassword('${element.website}')+showPasswords()">Delete</button></td>
             </tr>`
             tb.innerHTML=tb.innerHTML + str;
         }
@@ -81,9 +86,10 @@ const showPasswords=()=>{
 
 
 console.log("Working");
-if(checkRedentant('facebook.com','varun221')){   
-    document.getElementById("checkRed").innerText="yes";     
-    }
+// if(checkRedentant('facebook.com','varun221')){   
+//     document.getElementById("checkRed").innerText="yes";     
+//     }
+// deletePassword('varun.com');
 showPasswords();
 document.querySelector(".btn").addEventListener("click",(e)=>{
     e.preventDefault() //preventing page to reload or we can say prevent form to get submited
@@ -91,21 +97,35 @@ document.querySelector(".btn").addEventListener("click",(e)=>{
     console.log(username.value, password.value);
     let passwords=localStorage.getItem("passwords")
     console.log(passwords)
+
     if(passwords==null){
         let json=[]
         json.push({website:website.value, username:username.value, password:password.value});
         alert("Password Saved");
         localStorage.setItem("passwords", JSON.stringify(json))
     }
+    
     else{
-        let json= JSON.parse(localStorage.getItem("passwords"))
-        if(checkRedentant('facebook.com','varun221')){        
-            }
-        else{
+        let json;
+        if(checkRedentant(website.value, username.value)){
+            if(confirm("Want to Update the Password?")){
+            deletePassword(website.value);
+            json= JSON.parse(localStorage.getItem("passwords"));
             json.push({website:website.value, username:username.value, password:password.value});
+            localStorage.setItem("passwords", JSON.stringify(json))
+            alert("Password Updated");
+            }
+            else{
+                showPasswords();
+            }
         }
-        alert("Password Saved");
-        localStorage.setItem("passwords", JSON.stringify(json))
+        else{
+            json= JSON.parse(localStorage.getItem("passwords"));
+            json.push({website:website.value, username:username.value, password:password.value});
+            alert("Password Saved");
+            localStorage.setItem("passwords", JSON.stringify(json))
+        }
+        
     }
     showPasswords();  
 })
