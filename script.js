@@ -40,15 +40,34 @@ function copyText(txt) {
 
 
 
-const deletePassword = (website) =>{
+// const deletePassword = (website) =>{
+//     let data = localStorage.getItem("passwords");
+//     let arr= JSON.parse(data);
+//     arrUpdated = arr.filter((e)=>{
+//         return e.website !=website
+//     });
+//     localStorage.setItem("passwords", JSON.stringify(arrUpdated));
+//     alert(`Successfully deleted ${website}'s password`);
+//     // showPasswords();
+// }
+
+
+function deletePassword(website,username){
     let data = localStorage.getItem("passwords");
-    let arr= JSON.parse(data);
-    arrUpdated = arr.filter((e)=>{
-        return e.website !=website
+    let arr=JSON.parse(data);
+    let arrUpdated=[];
+    arr.forEach((e)=>{
+        if(e.website!=website){
+            arrUpdated.push(e);
+        }
+        else if(e.website==website){
+            if(e.username!=username){
+                arrUpdated.push(e);
+            }
+        }
     });
-    localStorage.setItem("passwords", JSON.stringify(arrUpdated));
+    localStorage.setItem("passwords",JSON.stringify(arrUpdated));
     alert(`Successfully deleted ${website}'s password`);
-    // showPasswords();
 }
 
 // Logic to fill the table
@@ -73,7 +92,7 @@ const showPasswords=()=>{
             <td>${element.website} <img onclick="copyText('${element.website}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td>${element.username} <img onclick="copyText('${element.username}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
             <td>${maskPassword(element.password)} <img onclick="copyText('${element.password}')" src="copy.svg" alt="Copy Button" width="10" height="10"></td>
-            <td><button class="btnsm" onclick="deletePassword('${element.website}')+showPasswords()">Delete</button></td>
+            <td><button class="btnsm" onclick="deletePassword('${element.website}','${element.username}')+showPasswords()">Delete</button></td>
             </tr>`
             tb.innerHTML=tb.innerHTML + str;
         }
@@ -105,7 +124,7 @@ document.querySelector(".btn").addEventListener("click",(e)=>{
         let json;
         if(checkRedentant(website.value, username.value)){
             if(confirm("Want to Update the Password?")){
-            deletePassword(website.value);
+            deletePassword(website.value,username.value);
             json= JSON.parse(localStorage.getItem("passwords"));
             json.push({website:website.value, username:username.value, password:password.value});
             localStorage.setItem("passwords", JSON.stringify(json))
