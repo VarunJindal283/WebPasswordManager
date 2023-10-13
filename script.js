@@ -57,7 +57,7 @@ const showPasswords=()=>{
     let tb=document.querySelector("table");
     let data = localStorage.getItem("passwords");
     if(data == null || JSON.parse(data).length == 0){
-        tb.innerHTML= "No Data To Show"
+        tb.innerHTML= "...."+"No Data To Show "+"...."
     }
     else{
         tb.innerHTML=`<tr>
@@ -86,10 +86,6 @@ const showPasswords=()=>{
 
 
 console.log("Working");
-// if(checkRedentant('facebook.com','varun221')){   
-//     document.getElementById("checkRed").innerText="yes";     
-//     }
-// deletePassword('varun.com');
 showPasswords();
 document.querySelector(".btn").addEventListener("click",(e)=>{
     e.preventDefault() //preventing page to reload or we can say prevent form to get submited
