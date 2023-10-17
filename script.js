@@ -124,9 +124,16 @@ document.querySelector(".btn").addEventListener("click",(e)=>{
         let json;
         if(checkRedentant(website.value, username.value)){
             if(confirm("Want to Update the Password?")){
-            deletePassword(website.value,username.value);
+            // deletePassword(website.value,username.value);
             json= JSON.parse(localStorage.getItem("passwords"));
-            json.push({website:website.value, username:username.value, password:password.value});
+            json.forEach((x)=>{
+                if(x.website==website.value){
+                    if(x.username==username.value){
+                        x.password=password.value;
+                    }
+                }
+            }); 
+            // json.push({website:website.value, username:username.value, password:password.value});
             localStorage.setItem("passwords", JSON.stringify(json))
             alert("Password Updated");
             }
