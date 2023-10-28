@@ -12,8 +12,19 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
     }
     else{
         json=JSON.parse(users);
-        json.push({user:username.value,pass:pass.value});
-        alert("Account Created");
-        localStorage.setItem("users",JSON.stringify(json));
+        let userExist=false;
+        json.forEach((element)=>{
+            if(username.value==element.user){
+                userExist=true;
+            }
+        })
+        if(userExist){
+            console.log("Please Sign in User already exist");
+        }
+        else{
+            json.push({user:username.value,pass:pass.value});
+            alert("Account Created");
+            localStorage.setItem("users",JSON.stringify(json));
+        }
     }
 })
