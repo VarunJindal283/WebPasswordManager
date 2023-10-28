@@ -27,4 +27,7 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
             localStorage.setItem("users",JSON.stringify(json));
         }
     }
+});
+document.querySelector(".redirect").addEventListener("click",(e)=>{
+    window.location.href="signin.html";
 })

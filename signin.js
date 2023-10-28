@@ -18,4 +18,7 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
     if(userexist==false){
         console.log("User not found");
     }
+});
+document.querySelector(".redirect").addEventListener("click",(e)=>{
+    window.location.href="signup.html";
 })

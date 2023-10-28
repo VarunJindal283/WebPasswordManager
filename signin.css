@@ -43,6 +43,7 @@ body{
     border-radius: 25px;
     text-align: center;
     padding: 5px;
+    color: white;
 }
 .submit{
     background: transparent;
@@ -56,4 +57,14 @@ body{
     cursor: pointer;
     font-weight: bold;
     background-color: white;
+}
+.redirect{
+    cursor: pointer;
+    color: white;
+    margin: 18px auto;
+}
+.redirect:hover{
+    color: rgb(181, 179, 176);
+    font-weight: 600;
+    text-decoration: underline;
 }
