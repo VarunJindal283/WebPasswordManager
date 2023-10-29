@@ -1,4 +1,6 @@
 console.log("working");
+var modal = document.getElementById("myModal");
+var modalText=document.getElementsByClassName("modalText")[0];
 document.querySelector("#sub").addEventListener("click",(e)=>{
     e.preventDefault();
     console.log("clicked");
