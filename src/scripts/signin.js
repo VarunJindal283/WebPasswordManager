@@ -12,13 +12,25 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
         }
         else if(username.value==element.user && pass.value!=element.pass){
             userexist=true;
+            modalText.innerHTML="Entered wrong password";
+            modal.style.display = "block";
             console.log("You entered wrong password");
         }
     })
     if(userexist==false){
+        modalText.innerHTML="User not found.. Please signup.";
+        modal.style.display = "block";
         console.log("User not found");
     }
+    username.value="";
+    pass.value="";
 });
 document.querySelector(".redirect").addEventListener("click",(e)=>{
     window.location.href="../../index.html";
 })
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
