@@ -1,23 +1,3 @@
-function updatedPassword(website,username,password){
-    deletePassword(website);
-}
-
-
-function checkRedentant(website, username){
-    let arr= JSON.parse(localStorage.getItem("passwords")); 
-    let r=false; 
-    arr.forEach((x)=>{
-        if(x.website==website){
-            if(x.username==username){
-                r=true;
-            }
-        }
-    }); 
-    return r;
-}
-
-
-
 function maskPassword(pass){
     let str="";
     for(let index =0; index<pass.length; index++){
@@ -25,7 +5,6 @@ function maskPassword(pass){
     }
     return str;
 }
-
 
 
 function copyText(txt) {
@@ -37,19 +16,6 @@ function copyText(txt) {
         document.getElementById("alert").style.display = "none";
     },500);
 }
-
-
-
-// const deletePassword = (website) =>{
-//     let data = localStorage.getItem("passwords");
-//     let arr= JSON.parse(data);
-//     arrUpdated = arr.filter((e)=>{
-//         return e.website !=website
-//     });
-//     localStorage.setItem("passwords", JSON.stringify(arrUpdated));
-//     alert(`Successfully deleted ${website}'s password`);
-//     // showPasswords();
-// }
 
 
 function deletePassword(website,username){
@@ -105,49 +71,12 @@ const showPasswords=()=>{
 
 
 console.log("Working");
-showPasswords();
-document.querySelector(".btn").addEventListener("click",(e)=>{
-    e.preventDefault() //preventing page to reload or we can say prevent form to get submited
-    console.log("clicked");
-    console.log(username.value, password.value);
-    let passwords=localStorage.getItem("passwords")
-    console.log(passwords)
 
-    if(passwords==null){
-        let json=[]
-        json.push({website:website.value, username:username.value, password:password.value});
-        alert("Password Saved");
-        localStorage.setItem("passwords", JSON.stringify(json))
-    }
-    
-    else{
-        let json;
-        if(checkRedentant(website.value, username.value)){
-            if(confirm("Want to Update the Password?")){
-            // deletePassword(website.value,username.value);
-            json= JSON.parse(localStorage.getItem("passwords"));
-            json.forEach((x)=>{
-                if(x.website==website.value){
-                    if(x.username==username.value){
-                        x.password=password.value;
-                    }
-                }
-            }); 
-            // json.push({website:website.value, username:username.value, password:password.value});
-            localStorage.setItem("passwords", JSON.stringify(json))
-            alert("Password Updated");
-            }
-            else{
-                showPasswords();
-            }
-        }
-        else{
-            json= JSON.parse(localStorage.getItem("passwords"));
-            json.push({website:website.value, username:username.value, password:password.value});
-            alert("Password Saved");
-            localStorage.setItem("passwords", JSON.stringify(json))
-        }
-        
-    }
-    showPasswords();  
+document.querySelector(".redirect").addEventListener("click",(e)=>{
+    window.location.href="addPass.html";
 })
+
+
+showPasswords();
+
+

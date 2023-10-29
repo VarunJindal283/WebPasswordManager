@@ -60,3 +60,7 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
     username.value="";
     password.value="";
 })
+
+document.querySelector(".redirect").addEventListener("click",(e)=>{
+    window.location.href="home.html";
+})
