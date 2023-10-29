@@ -8,7 +8,7 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
         if(username.value==element.user && pass.value==element.pass){
             console.log("entered")
             userexist=true;
-            window.location.href="index.html";
+            window.location.href="home.html";
         }
         else if(username.value==element.user && pass.value!=element.pass){
             userexist=true;
@@ -20,5 +20,5 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
     }
 });
 document.querySelector(".redirect").addEventListener("click",(e)=>{
-    window.location.href="signup.html";
+    window.location.href="../../index.html";
 })

@@ -38,7 +38,7 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
     pass.value="";
 });
 document.querySelector(".redirect").addEventListener("click",(e)=>{
-    window.location.href="signin.html";
+    window.location.href="src/pages/signin.html";
 })
 
 
