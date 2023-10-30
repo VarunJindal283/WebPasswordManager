@@ -7,15 +7,16 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
     console.log("clicked");
     let users=localStorage.getItem("users");
     console.log(username.value,pass.value);
-    if(users==null){
-        let json=[]
-        json.push({user:username.value,pass:pass.value});
-        modalText.innerHTML="Account Created";
-        modal.style.display = "block";
-        localStorage.setItem("users",JSON.stringify(json));
-    }
-    else{
-        json=JSON.parse(users);
+    if(username.value!="" && pass.value!=""){
+        if(users==null){
+            let json=[]
+            json.push({user:username.value,pass:pass.value});
+            modalText.innerHTML="Account Created";
+            modal.style.display = "block";
+            localStorage.setItem("users",JSON.stringify(json));
+        }
+        else{
+            json=JSON.parse(users);
         let userExist=false;
         json.forEach((element)=>{
             if(username.value==element.user){
@@ -34,6 +35,11 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
             localStorage.setItem("users",JSON.stringify(json));
         }
     }
+}
+else{
+    modalText.innerHTML="Enter a vaild Username and Password";
+    modal.style.display = "block";
+}
     username.value="";
     pass.value="";
 });

@@ -20,20 +20,20 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
     console.log(username.value, password.value);
     let passwords=localStorage.getItem("passwords")
     console.log(passwords)
-
-    if(passwords==null){
-        let json=[]
-        json.push({website:website.value, username:username.value, password:password.value});
-        alert("Password Saved");
-        localStorage.setItem("passwords", JSON.stringify(json))
-    }
-    
-    else{
-        let json;
-        if(checkRedentant(website.value, username.value)){
-            if(confirm("Want to Update the Password?")){
-            json= JSON.parse(localStorage.getItem("passwords"));
-            json.forEach((x)=>{
+    if(website.value!="" && username.value!="" && password.value!=""){
+        if(passwords==null){
+            let json=[]
+            json.push({website:website.value, username:username.value, password:password.value});
+            alert("Password Saved");
+            localStorage.setItem("passwords", JSON.stringify(json))
+        }
+        
+        else{
+            let json;
+            if(checkRedentant(website.value, username.value)){
+                if(confirm("Want to Update the Password?")){
+                    json= JSON.parse(localStorage.getItem("passwords"));
+                    json.forEach((x)=>{
                 if(x.website==website.value){
                     if(x.username==username.value){
                         x.password=password.value;
@@ -42,20 +42,25 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
             }); 
             localStorage.setItem("passwords", JSON.stringify(json))
             alert("Password Updated");
-            }
-            else{
-                website.value="";
-                username.value="";
-                password.value="";
-            }
         }
         else{
-            json= JSON.parse(localStorage.getItem("passwords"));
-            json.push({website:website.value, username:username.value, password:password.value});
-            alert("Password Saved");
-            localStorage.setItem("passwords", JSON.stringify(json))
+            website.value="";
+            username.value="";
+            password.value="";
         }
     }
+    else{
+        json= JSON.parse(localStorage.getItem("passwords"));
+        json.push({website:website.value, username:username.value, password:password.value});
+        alert("Password Saved");
+        localStorage.setItem("passwords", JSON.stringify(json))
+    }
+}
+}
+else{
+    modalText.innerHTML="Enter a valid Website, Username and Password";
+    modal.style.display = "block";
+}
     website.value="";
     username.value="";
     password.value="";
