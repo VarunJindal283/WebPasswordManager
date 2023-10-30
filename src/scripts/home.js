@@ -1,3 +1,5 @@
+let PmUser=sessionStorage.getItem("PmUser");
+
 function maskPassword(pass){
     let str="";
     for(let index =0; index<pass.length; index++){
@@ -19,7 +21,7 @@ function copyText(txt) {
 
 
 function deletePassword(website,username){
-    let data = localStorage.getItem("passwords");
+    let data = localStorage.getItem(`${PmUser}`);
     let arr=JSON.parse(data);
     let arrUpdated=[];
     arr.forEach((e)=>{
@@ -32,7 +34,7 @@ function deletePassword(website,username){
             }
         }
     });
-    localStorage.setItem("passwords",JSON.stringify(arrUpdated));
+    localStorage.setItem(`${PmUser}`,JSON.stringify(arrUpdated));
     alert(`Successfully deleted ${website}'s password`);
 }
 
@@ -40,7 +42,7 @@ function deletePassword(website,username){
 
 const showPasswords=()=>{ 
     let tb=document.querySelector("table");
-    let data = localStorage.getItem("passwords");
+    let data = localStorage.getItem(`${PmUser}`);
     if(data == null || JSON.parse(data).length == 0){
         tb.innerHTML= "...."+"No Data To Show "+"...."
     }

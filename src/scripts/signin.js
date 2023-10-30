@@ -17,6 +17,7 @@ document.querySelector("#sub").addEventListener("click",(e)=>{
                 if(username.value==element.user && pass.value==element.pass){
                     console.log("entered")
                     userexist=true;
+                    sessionStorage.setItem("PmUser",username.value);
                     window.location.href="home.html";
                 }
                 else if(username.value==element.user && pass.value!=element.pass){

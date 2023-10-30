@@ -1,5 +1,7 @@
+let PmUser=sessionStorage.getItem("PmUser");
+
 function checkRedentant(website, username){
-    let arr= JSON.parse(localStorage.getItem("passwords")); 
+    let arr= JSON.parse(localStorage.getItem(`${PmUser}`)); 
     let r=false; 
     arr.forEach((x)=>{
         if(x.website==website){
@@ -18,21 +20,21 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
     e.preventDefault() //preventing page to reload or we can say prevent form to get submited
     console.log("clicked");
     console.log(username.value, password.value);
-    let passwords=localStorage.getItem("passwords")
+    let passwords=localStorage.getItem(`${PmUser}`)
     console.log(passwords)
     if(website.value!="" && username.value!="" && password.value!=""){
         if(passwords==null){
             let json=[]
             json.push({website:website.value, username:username.value, password:password.value});
             alert("Password Saved");
-            localStorage.setItem("passwords", JSON.stringify(json))
+            localStorage.setItem(`${PmUser}`, JSON.stringify(json))
         }
         
         else{
             let json;
             if(checkRedentant(website.value, username.value)){
                 if(confirm("Want to Update the Password?")){
-                    json= JSON.parse(localStorage.getItem("passwords"));
+                    json= JSON.parse(localStorage.getItem(`${PmUser}`));
                     json.forEach((x)=>{
                 if(x.website==website.value){
                     if(x.username==username.value){
@@ -40,7 +42,7 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
                     }
                 }
             }); 
-            localStorage.setItem("passwords", JSON.stringify(json))
+            localStorage.setItem(`${PmUser}`, JSON.stringify(json))
             alert("Password Updated");
         }
         else{
@@ -50,10 +52,10 @@ document.querySelector(".btnn").addEventListener("click",(e)=>{
         }
     }
     else{
-        json= JSON.parse(localStorage.getItem("passwords"));
+        json= JSON.parse(localStorage.getItem(`${PmUser}`));
         json.push({website:website.value, username:username.value, password:password.value});
         alert("Password Saved");
-        localStorage.setItem("passwords", JSON.stringify(json))
+        localStorage.setItem(`${PmUser}`, JSON.stringify(json))
     }
 }
 }
