@@ -33,6 +33,9 @@ ul li{
 ul li:hover{
     color: white;
 }
+.logout{
+    cursor: pointer;
+}
 .container{
     max-width: 80vw;
     margin: 23px auto;

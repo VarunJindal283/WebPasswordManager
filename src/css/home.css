@@ -33,6 +33,9 @@ ul li{
 ul li:hover{
     color: white;
 }
+.logout{
+    cursor: pointer;
+}
 .main{
     /* border: 2px solid white; */
     background-image: url(../images/blacklap.jpg);
