@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    color: white;
+    /* color: white; */
 }
 body{
     background-image: url(../images/backdrop.jpg);
@@ -14,17 +14,23 @@ nav{
     padding: 12px 3px;
     display: flex;
     justify-content: space-between;
+    color: white;
+
 }
 .logo{
     margin: 0px 23px;
     font-weight: 800;
     font-size: 25px;
     cursor: pointer;
+    color: white;
+
 }
 ul{
     display: flex;
     margin: 0px 23px;
     align-items: center;
+    color: white;
+
 }
 ul li{
     list-style: none;
@@ -43,19 +49,27 @@ ul li:hover{
     min-height: 30vw;
     text-align: center;
     padding: 30px 0px;
+    color: white;
+
 }
 table, td, tr, th{
     border: 2px solid black;
     border-collapse: collapse;
     padding: 5px 13px;
     margin: auto;
+    color: white;
+
 }
 .container{
     max-width: 80vw;
     margin: 23px auto;
+    color: white;
+
 }
 h1, h2, h3{
     margin:23px 0px;
+    color: white;
+
 }
 .btn{
     padding: 8px 17px;
