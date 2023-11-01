@@ -1,4 +1,7 @@
 if(sessionStorage.length!=0){
+    var modal = document.getElementById("myModal");
+    var modalText=document.getElementsByClassName("modalText")[0];
+
 
     document.querySelector(".logo").addEventListener("click", (e)=>{
         window.location.href="home.html"
@@ -39,7 +42,9 @@ if(sessionStorage.length!=0){
             if(passwords==null){
                 let json=[]
                 json.push({website:website.value, username:username.value, password:password.value});
-                alert("Password Saved");
+                // alert("Password Saved");
+                modalText.innerHTML="Password Saved";
+                modal.style.display = "block";
                 localStorage.setItem(`${PmUser}`, JSON.stringify(json))
             }
             
@@ -56,7 +61,9 @@ if(sessionStorage.length!=0){
                             }
                         }); 
                         localStorage.setItem(`${PmUser}`, JSON.stringify(json))
-                        alert("Password Updated");
+                        // alert("Password Updated");
+                        modalText.innerHTML="Password Updated Sucessfully";
+                        modal.style.display = "block";
                     }
                     else{
                         website.value="";
@@ -67,7 +74,9 @@ if(sessionStorage.length!=0){
     else{
         json= JSON.parse(localStorage.getItem(`${PmUser}`));
         json.push({website:website.value, username:username.value, password:password.value});
-        alert("Password Saved");
+        // alert("Password Saved");
+        modalText.innerHTML="Password Saved";
+        modal.style.display = "block";
         localStorage.setItem(`${PmUser}`, JSON.stringify(json))
     }
 }
@@ -84,6 +93,13 @@ password.value="";
 document.querySelector(".redirect").addEventListener("click",(e)=>{
     window.location.href="home.html";
 })
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
 else{
     window.location.href="signin.html";

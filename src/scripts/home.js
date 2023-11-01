@@ -1,4 +1,8 @@
 if(sessionStorage.length!=0){
+    var modal = document.getElementById("myModal");
+    var modalText=document.getElementsByClassName("modalText")[0];
+
+
     document.querySelector(".logo").addEventListener("click", (e)=>{
         window.location.href="home.html"
     })
@@ -45,7 +49,9 @@ if(sessionStorage.length!=0){
             }
         });
         localStorage.setItem(`${PmUser}`,JSON.stringify(arrUpdated));
-        alert(`Successfully deleted ${website}'s password`);
+        // alert(`Successfully deleted ${website}'s password`);
+        modalText.innerHTML=`Successfully deleted ${website}'s password`;
+        modal.style.display = "block";
     }
 
     // Logic to fill the table
@@ -90,6 +96,12 @@ if(sessionStorage.length!=0){
 
 
     showPasswords();
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
 }
 else{
     window.location.href="signin.html";
