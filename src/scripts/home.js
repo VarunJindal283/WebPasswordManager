@@ -50,8 +50,14 @@ if(sessionStorage.length!=0){
         });
         localStorage.setItem(`${PmUser}`,JSON.stringify(arrUpdated));
         // alert(`Successfully deleted ${website}'s password`);
+        showPasswords();
         modalText.innerHTML=`Successfully deleted ${website}'s password`;
         modal.style.display = "block";
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
     }
 
     // Logic to fill the table
